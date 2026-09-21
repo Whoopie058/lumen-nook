@@ -1,0 +1,2 @@
+[10-Sep-2026 10:12:39 UTC] PHP Warning:  Undefined property: stdClass::$id in C:\Users\Laura\Local Sites\lumen-nook\app\public\wp-includes\rest-api\endpoints\class-wp-rest-posts-controller.php on line 769
+[10-Sep-2026 10:12:39 UTC] PHP Warning:  Undefined property: stdClass::$post_parent in C:\Users\Laura\Local Sites\lumen-nook\app\public\wp-includes\rest-api\endpoints\class-wp-rest-posts-controller.php on line 772

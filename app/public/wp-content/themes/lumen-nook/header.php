@@ -73,9 +73,9 @@
         </form>
 
 
-        <button type="button">
-            temp
-        </button>
+        <a class="blogs-tab" href="<?php echo esc_url(home_url('/gear/')); ?>">
+            Shop gear
+        </a>
 
         <a
             class="profile-tab"
@@ -89,6 +89,10 @@
                 class="profile-image"
             >
 
+        </a>
+
+        <a class="blogs-tab" href="<?php echo esc_url(home_url('/blogs/')); ?>">
+            Blogs
         </a>
 
         <details class="dropdown-menu">

@@ -45,6 +45,10 @@
             Inspiration
         </a>
 
+        <a href="<?php echo esc_url(home_url('/blogs/')); ?>">
+            Blogs
+        </a>
+
         <a href="<?php echo esc_url(home_url('/favourites/')); ?>">
             Favourites
         </a>

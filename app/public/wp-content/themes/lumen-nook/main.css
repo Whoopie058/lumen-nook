@@ -40,9 +40,18 @@
 body, html {
     width: var(--width-full);
     min-height: 100%;
-    font-family: "UAV OSD Sans Mono", sans-serif;
+    font-family: "Space Mono", monospace;
     position: relative;
     background-color: var(--background-color-navigation);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "UAV OSD Sans Mono", sans-serif;
 }
 
 .container {
@@ -242,6 +251,7 @@ body, html {
     justify-content: flex-start;
     position:absolute;
     top:0;
+    font-family: "UAV OSD Sans Mono", sans-serif;
 }
 
 .menu-container {
@@ -362,6 +372,327 @@ body, html {
     border: 1px solid var(--blue-grey);
 }
 
+.blogs-tab {
+    color: var(--light-grey);
+    text-decoration: none;
+}
+
+.blogs-tab:hover,
+.blogs-tab:focus-visible {
+    color: var(--cyan-buttons);
+}
+
+.blogs-page,
+.single-blog-page,
+.gear-page {
+    width: min(100% - 40px, 1120px);
+    margin: 0 auto;
+    padding: 130px 0 70px;
+    color: var(--light-grey);
+}
+
+.gear-header {
+    max-width: 680px;
+    margin-bottom: 40px;
+}
+
+.gear-header h1 {
+    margin: 8px 0 14px;
+    font-size: clamp(36px, 6vw, 68px);
+}
+
+.gear-header > p:last-child {
+    color: var(--blue-grey);
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.gear-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.gear-card {
+    overflow: hidden;
+    background-color: #1b1d27;
+    border: 1px solid #34384c;
+}
+
+.gear-image-placeholder {
+    min-height: 260px;
+    display: grid;
+    place-items: center;
+    color: var(--blue-grey);
+    background-color: #272b3a;
+    border-bottom: 1px solid #34384c;
+}
+
+.gear-card-details {
+    display: grid;
+    gap: 8px;
+    padding: 20px;
+}
+
+.gear-brand {
+    color: var(--blue-grey);
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.gear-card h2 {
+    font-size: 22px;
+}
+
+.gear-price {
+    color: var(--cyan-buttons);
+    font-size: 17px;
+}
+
+.gear-button {
+    width: fit-content;
+    margin-top: 8px;
+    padding: 10px 14px;
+    color: var(--text-color);
+    text-decoration: none;
+    background-color: var(--cyan-buttons);
+    border-radius: 20px;
+}
+
+.gear-button:hover,
+.gear-button:focus-visible {
+    background-color: var(--pink);
+}
+
+.blogs-header {
+    max-width: 680px;
+    margin-bottom: 40px;
+}
+
+.eyebrow,
+.blog-meta {
+    color: var(--blue-grey);
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.blogs-header h1,
+.single-blog-post h1 {
+    margin: 8px 0 14px;
+    font-size: clamp(36px, 6vw, 68px);
+}
+
+.blogs-header > p:last-child {
+    color: var(--blue-grey);
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.blogs-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
+    gap: 40px;
+    align-items: start;
+}
+
+.blog-feed,
+.blog-sidebar {
+    display: grid;
+    gap: 18px;
+}
+
+.blog-feed > h2,
+.post-editor h2,
+.comments-area h2 {
+    font-size: 26px;
+}
+
+.blog-card,
+.post-editor,
+.comments-area,
+.single-blog-post {
+    padding: 26px;
+    background-color: #1b1d27;
+    border: 1px solid #34384c;
+}
+
+.blog-card-content {
+    display: grid;
+    gap: 14px;
+}
+
+.blog-card h3 {
+    font-size: 25px;
+}
+
+.blog-card h3 a,
+.text-link {
+    color: var(--light-grey);
+    text-decoration: none;
+}
+
+.blog-card h3 a:hover,
+.blog-card h3 a:focus-visible,
+.text-link:hover,
+.text-link:focus-visible {
+    color: var(--cyan-buttons);
+}
+
+.blog-card p:not(.blog-meta) {
+    color: var(--blue-grey);
+    line-height: 1.5;
+}
+
+.blog-card-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    color: var(--blue-grey);
+    font-size: 14px;
+}
+
+.text-link {
+    color: var(--cyan-buttons);
+}
+
+.post-editor {
+    display: grid;
+    gap: 14px;
+}
+
+.post-editor p {
+    color: var(--blue-grey);
+    line-height: 1.45;
+}
+
+.post-editor form {
+    display: grid;
+    gap: 8px;
+}
+
+.post-editor label {
+    margin-top: 8px;
+}
+
+.post-editor input,
+.post-editor textarea,
+.comments-area input,
+.comments-area textarea {
+    width: 100%;
+    padding: 11px;
+    color: var(--text-color);
+    font: inherit;
+    background-color: var(--light-grey);
+    border: 1px solid var(--blue-grey);
+}
+
+.post-editor textarea,
+.comments-area textarea {
+    resize: vertical;
+}
+
+.post-editor .hero-button {
+    margin-top: 10px;
+    border: 0;
+}
+
+.blog-notice {
+    width: fit-content;
+    margin-bottom: 28px;
+    padding: 12px 16px;
+    color: var(--text-color);
+    background-color: var(--cyan-buttons);
+}
+
+.blog-notice-error {
+    background-color: var(--pink);
+}
+
+.empty-state {
+    color: var(--blue-grey);
+}
+
+.single-blog-page {
+    max-width: 840px;
+}
+
+.single-blog-content {
+    margin: 30px 0;
+    color: var(--blue-grey);
+    line-height: 1.7;
+}
+
+.single-blog-content a {
+    color: var(--cyan-buttons);
+}
+
+.like-button {
+    padding: 10px 16px;
+    color: var(--light-grey);
+    font: inherit;
+    background-color: transparent;
+    border: 1px solid var(--blue-grey);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.like-button:hover,
+.like-button:focus-visible,
+.like-button.is-liked {
+    color: var(--pink);
+    border-color: var(--pink);
+}
+
+.like-button:disabled {
+    cursor: wait;
+    opacity: 0.6;
+}
+
+.comments-area {
+    max-width: 840px;
+    margin: 28px auto 0;
+}
+
+.comment-list {
+    display: grid;
+    gap: 16px;
+    margin: 22px 0;
+    padding-left: 22px;
+}
+
+.comment-list article {
+    color: var(--blue-grey);
+}
+
+.comment-list .comment-meta {
+    margin-bottom: 8px;
+}
+
+.comments-area .comment-respond {
+    margin-top: 28px;
+}
+
+.comments-area .comment-form {
+    display: grid;
+    gap: 10px;
+}
+
+.comments-area .form-submit {
+    margin-top: 8px;
+}
+
+.comments-area .submit {
+    padding: 10px 16px;
+    color: var(--text-color);
+    font: inherit;
+    background-color: var(--cyan-buttons);
+    border: 0;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
 .fixed {
     position: fixed;
     top:0;
@@ -413,10 +744,22 @@ body, html {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 36px 20px;
     }
+
+    .blogs-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .gear-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 480px) {
     .footer {
+        grid-template-columns: 1fr;
+    }
+
+    .gear-grid {
         grid-template-columns: 1fr;
     }
 }

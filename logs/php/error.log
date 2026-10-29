@@ -16,3 +16,9 @@
 [05-Oct-2026 00:18:02 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in C:\Users\Laura\Local Sites\lumen-nook\app\public\wp-content\themes\lumen-nook\functions.php on line 29
 [05-Oct-2026 06:56:53 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in C:\Users\Laura\Local Sites\lumen-nook\app\public\wp-content\themes\lumen-nook\functions.php on line 29
 [05-Oct-2026 06:57:40 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in C:\Users\Laura\Local Sites\lumen-nook\app\public\wp-content\themes\lumen-nook\functions.php on line 29
+[29-Oct-2026 12:37:01 UTC] PHP Parse error:  syntax error, unexpected identifier "s", expecting ")" in C:\Users\Laura\Local Sites\lumen-nook\app\public\wp-content\themes\lumen-nook\functions.php on line 156
+[29-Oct-2026 12:37:02 UTC] PHP Parse error:  syntax error, unexpected identifier "s", expecting ")" in C:\Users\Laura\Local Sites\lumen-nook\app\public\wp-content\themes\lumen-nook\functions.php on line 156
+[29-Oct-2026 12:37:10 UTC] PHP Parse error:  syntax error, unexpected identifier "s", expecting ")" in C:\Users\Laura\Local Sites\lumen-nook\app\public\wp-content\themes\lumen-nook\functions.php on line 156
+[29-Oct-2026 12:37:10 UTC] PHP Parse error:  syntax error, unexpected identifier "s", expecting ")" in C:\Users\Laura\Local Sites\lumen-nook\app\public\wp-content\themes\lumen-nook\functions.php on line 156
+[29-Oct-2026 12:37:16 UTC] PHP Parse error:  syntax error, unexpected identifier "s", expecting ")" in C:\Users\Laura\Local Sites\lumen-nook\app\public\wp-content\themes\lumen-nook\functions.php on line 156
+[29-Oct-2026 12:37:17 UTC] PHP Parse error:  syntax error, unexpected identifier "s", expecting ")" in C:\Users\Laura\Local Sites\lumen-nook\app\public\wp-content\themes\lumen-nook\functions.php on line 156

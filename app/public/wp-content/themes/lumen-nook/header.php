@@ -79,7 +79,7 @@
 
         <a
             class="profile-tab"
-            href="<?php echo esc_url(admin_url('profile.php')); ?>"
+            href="<?php echo esc_url(is_user_logged_in() ? admin_url('profile.php') : home_url('/login/')); ?>"
             aria-label="Profile"
         >
 

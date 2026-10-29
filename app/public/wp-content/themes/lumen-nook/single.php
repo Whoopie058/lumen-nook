@@ -3,8 +3,16 @@
 <main class="single-blog-page">
     <?php while (have_posts()) : the_post(); ?>
         <article class="single-blog-post">
-            <p class="blog-meta"><?php echo esc_html(get_the_date()); ?> · <?php echo esc_html(get_the_author()); ?></p>
+            <?php
+            $categories = get_the_category();
+            $category_name = !empty($categories) ? $categories[0]->name : 'Lumen Nook';
+            ?>
+            <p class="blog-category"><?php echo esc_html($category_name); ?></p>
             <h1><?php the_title(); ?></h1>
+            <p class="blog-meta"><?php echo esc_html(get_the_date()); ?> · <?php echo esc_html(get_the_author()); ?></p>
+            <?php if (has_post_thumbnail()) : ?>
+                <?php the_post_thumbnail('large', array('class' => 'single-blog-image')); ?>
+            <?php endif; ?>
             <div class="single-blog-content"><?php the_content(); ?></div>
 
             <?php
@@ -30,6 +38,10 @@
                     Sign in to like · <?php echo esc_html((int) get_post_meta(get_the_ID(), '_lumen_nook_likes', true)); ?>
                 </a>
             <?php endif; ?>
+
+            <a class="single-blog-back" href="<?php echo esc_url(home_url('/blogs/')); ?>">
+                ← Back to the blog
+            </a>
         </article>
 
         <?php comments_template(); ?>

@@ -3,9 +3,9 @@
 <main class="blogs-page">
 
     <header class="blogs-header">
-        <p class="eyebrow">Lumen Nook community</p>
-        <h1>Blogs</h1>
-        <p>Share your setup, discover new ideas, and connect with other creators.</p>
+        <p class="eyebrow">Tips, guides &amp; ideas</p>
+        <h1>The Lumen Nook Blog</h1>
+        <p>Ideas, guides, and inspiration for building a setup that works for you.</p>
     </header>
 
     <?php if (isset($_GET['blog_status']) && 'submitted' === $_GET['blog_status']) : ?>
@@ -21,15 +21,17 @@
     <div class="blogs-layout">
 
         <section class="blog-feed" aria-labelledby="latest-posts-heading">
-            <h2 id="latest-posts-heading">Latest posts</h2>
+            <h2 id="latest-posts-heading">Latest articles</h2>
 
             <?php
+            $hello_world_post = get_page_by_path('hello-world', OBJECT, 'post');
             $blog_posts = new WP_Query(
                 array(
                     'post_type' => 'post',
                     'post_status' => 'publish',
                     'posts_per_page' => 10,
-                    'paged' => max(1, get_query_var('paged'))
+                    'paged' => max(1, get_query_var('paged')),
+                    'post__not_in' => $hello_world_post ? array($hello_world_post->ID) : array()
                 )
             );
             ?>
@@ -37,21 +39,48 @@
             <?php if ($blog_posts->have_posts()) : ?>
                 <?php while ($blog_posts->have_posts()) : $blog_posts->the_post(); ?>
                     <article class="blog-card">
+                        <a class="blog-card-link" href="<?php the_permalink(); ?>">
+                            <?php if (has_post_thumbnail()) : ?>
+                                <?php the_post_thumbnail('large', array('class' => 'blog-card-image')); ?>
+                            <?php else : ?>
+                                <span class="blog-card-image blog-card-image-placeholder" aria-hidden="true">Lumen Nook</span>
+                            <?php endif; ?>
                         <div class="blog-card-content">
+                            <?php
+                            $categories = get_the_category();
+                            $category_name = !empty($categories) ? $categories[0]->name : 'Lumen Nook';
+                            ?>
+                            <p class="blog-category"><?php echo esc_html($category_name); ?></p>
                             <p class="blog-meta">
                                 <?php echo esc_html(get_the_date()); ?> · <?php echo esc_html(get_the_author()); ?>
                             </p>
                             <h3>
-                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                <?php the_title(); ?>
                             </h3>
                             <p><?php echo esc_html(wp_trim_words(get_the_excerpt(), 30)); ?></p>
                             <div class="blog-card-footer">
-                                <a class="text-link" href="<?php the_permalink(); ?>">Read post</a>
+                                <span class="text-link">Read Article <span aria-hidden="true">→</span></span>
                                 <span><?php echo esc_html(get_comments_number()); ?> comments</span>
                             </div>
                         </div>
+                        </a>
                     </article>
                 <?php endwhile; ?>
+
+                <?php
+                $pagination = paginate_links(
+                    array(
+                        'total' => $blog_posts->max_num_pages,
+                        'current' => max(1, get_query_var('paged')),
+                        'type' => 'list',
+                        'prev_text' => 'Previous',
+                        'next_text' => 'Next'
+                    )
+                );
+                ?>
+                <?php if ($pagination) : ?>
+                    <nav class="blog-pagination" aria-label="Blog pages"><?php echo wp_kses_post($pagination); ?></nav>
+                <?php endif; ?>
 
                 <?php wp_reset_postdata(); ?>
             <?php else : ?>

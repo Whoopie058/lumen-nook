@@ -16,6 +16,24 @@ function lumen_nook_enqueue_styles() {
         '1.2'
     );
 
+    if (is_page('sustainability-initiatives')) {
+        wp_enqueue_style(
+            'lumen-nook-sustainability',
+            get_template_directory_uri() . '/sustainability.css',
+            array('lumen-nook-main'),
+            '1.0'
+        );
+    }
+
+    if (is_page('about-us')) {
+        wp_enqueue_style(
+            'lumen-nook-about',
+            get_template_directory_uri() . '/about.css',
+            array('lumen-nook-main'),
+            '1.0'
+        );
+    }
+
     if (is_page('blogs') || is_singular('post')) {
         wp_enqueue_script(
             'lumen-nook-blog',

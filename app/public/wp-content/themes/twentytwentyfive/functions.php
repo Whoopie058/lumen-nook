@@ -64,18 +64,6 @@ if ( ! function_exists( 'twentytwentyfive_enqueue_styles' ) ) :
 endif;
 add_action( 'wp_enqueue_scripts', 'twentytwentyfive_enqueue_styles' );
 
-function lumen_nook_enqueue_sustainability_styles() {
-	if ( is_page( 'sustainability-initiatives' ) ) {
-		wp_enqueue_style(
-			'lumen-nook-sustainability',
-			get_theme_file_uri( 'sustainability.css' ),
-			array( 'twentytwentyfive-style' ),
-			'1.0'
-		);
-	}
-}
-add_action( 'wp_enqueue_scripts', 'lumen_nook_enqueue_sustainability_styles' );
-
 if ( ! function_exists( 'twentytwentyfive_block_styles' ) ) :
 	/**
 	 * Registers custom block styles.

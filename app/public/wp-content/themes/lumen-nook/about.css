@@ -1,0 +1,170 @@
+.lumen-about {
+    width: min(100% - 40px, 1240px);
+    margin: 0 auto;
+    padding: 130px 0 96px;
+    color: var(--light-grey);
+}
+.lumen-about h1, .lumen-about h2, .lumen-about h3 {
+    font-family: "UAV OSD Sans Mono", sans-serif;
+    font-weight: normal;
+    letter-spacing: -.03em;
+}
+.lumen-about h1 {
+    margin: 16px 0 28px;
+    color: var(--light-grey);
+    font-size: clamp(48px, 8vw, 104px);
+    line-height: 1.12;
+}
+.lumen-about h2 {
+    margin: 12px 0 20px;
+    color: var(--light-grey);
+    font-size: clamp(32px, 5vw, 64px);
+    line-height: 1.18;
+}
+.lumen-about h3 {
+    margin: 14px 0 12px;
+    color: var(--light-grey);
+    font-size: 28px;
+    line-height: 1.2;
+}
+.lumen-about p {
+    color: var(--blue-grey);
+    font-size: clamp(15px, 1.4vw, 17px);
+    line-height: 1.8;
+}
+.lumen-about p + p { margin-top: 16px; }
+.lumen-about__eyebrow {
+    color: var(--cyan-buttons) !important;
+    font-size: 12px !important;
+    letter-spacing: 2px;
+    line-height: 1.4 !important;
+    text-transform: uppercase;
+}
+.lumen-about__lead {
+    max-width: 650px;
+    color: var(--light-grey) !important;
+    font-size: clamp(18px, 2vw, 23px) !important;
+}
+.lumen-about__hero, .lumen-about__story {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, .85fr);
+    gap: clamp(40px, 8vw, 110px);
+    align-items: center;
+}
+.lumen-about__hero {
+    min-height: 620px;
+    padding-bottom: 88px;
+}
+.lumen-about__hero-copy { max-width: 700px; }
+.lumen-about__placeholder {
+    display: grid;
+    place-content: center;
+    min-height: 390px;
+    padding: 30px;
+    color: var(--purple);
+    text-align: center;
+    background: radial-gradient(circle at 30% 20%, rgba(169,112,255,.14), transparent 46%), #1b1d27;
+    border: 1px solid #34384c;
+    box-shadow: 12px 12px 0 rgba(255,140,200,.08);
+    transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.lumen-about__placeholder:hover {
+    border-color: var(--cyan-buttons);
+    box-shadow: 16px 16px 0 rgba(143,211,255,.1);
+    transform: translate(-2px, -2px);
+}
+.lumen-about__placeholder span {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+.lumen-about__placeholder small {
+    margin-top: 10px;
+    color: var(--blue-grey);
+    font-size: 11px;
+}
+.lumen-about__placeholder--hero { min-height: 500px; }
+.lumen-about__mission, .lumen-about__services, .lumen-about__story, .lumen-about__cta {
+    border-top: 1px solid #34384c;
+}
+.lumen-about__mission {
+    max-width: 800px;
+    padding: 86px 0;
+}
+.lumen-about__mission h2 { max-width: 700px; }
+.lumen-about__services { padding: 86px 0; }
+.lumen-about__section-heading { margin-bottom: 34px; }
+.lumen-about__service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+.lumen-about__service {
+    position: relative;
+    min-height: 300px;
+    padding: 28px;
+    background: #1b1d27;
+    border: 1px solid #34384c;
+    transition: border-color .2s ease, transform .2s ease;
+}
+.lumen-about__service:hover {
+    border-color: var(--purple);
+    transform: translateY(-5px);
+}
+.lumen-about__service-number {
+    color: var(--pink);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+.lumen-about__service-icon {
+    margin-top: 28px;
+    color: var(--cyan-buttons);
+    font-size: 26px;
+}
+.lumen-about__service p { font-size: 15px; }
+.lumen-about__service a {
+    display: inline-block;
+    margin-top: 22px;
+    color: var(--cyan-buttons);
+    text-decoration: none;
+}
+.lumen-about__service a:hover, .lumen-about__service a:focus-visible { color: var(--pink); }
+.lumen-about__story {
+    padding: 100px 0;
+}
+.lumen-about__story-copy { max-width: 650px; }
+.lumen-about__cta {
+    padding: 90px 20px 20px;
+    text-align: center;
+}
+.lumen-about__cta p:not(.lumen-about__eyebrow) { max-width: 620px; margin-right: auto; margin-left: auto; }
+.lumen-about__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 30px;
+}
+.lumen-about__button-secondary {
+    color: var(--light-grey);
+    background: transparent;
+    border-color: var(--purple);
+}
+.lumen-about__button-secondary:hover, .lumen-about__button-secondary:focus-visible {
+    color: var(--text-color);
+    background: var(--pink);
+    border-color: var(--pink);
+}
+@media (max-width: 800px) {
+    .lumen-about__hero, .lumen-about__story {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .lumen-about__hero { min-height: 0; }
+    .lumen-about__placeholder, .lumen-about__placeholder--hero { min-height: 280px; }
+    .lumen-about__service-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .lumen-about__placeholder, .lumen-about__service { transition: none; }
+}

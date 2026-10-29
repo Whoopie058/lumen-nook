@@ -40,7 +40,7 @@
 
         </a>
 
-        <h1 class="logo-text">
+        <div class="logo-text">
 
             <a
                 class="logo-text-link"
@@ -49,7 +49,7 @@
                 Lumen Nook
             </a>
 
-        </h1>
+        </div>
 
     </div>
 

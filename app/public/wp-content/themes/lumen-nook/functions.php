@@ -76,10 +76,161 @@ function lumen_nook_setup() {
     );
 
     add_theme_support('post-thumbnails');
+    add_theme_support('title-tag');
 
 }
 
 add_action('after_setup_theme', 'lumen_nook_setup');
+
+function lumen_nook_page_description() {
+
+    if (is_singular('post')) {
+        $description = get_the_excerpt();
+    } elseif (is_front_page()) {
+        $description = 'Build a PC setup that fits your style, space, and budget with Lumen Nook gear, setup inspiration, and practical guidance.';
+    } elseif (is_page('about-us')) {
+        $description = 'Learn how Lumen Nook makes building a personal, practical PC and gaming setup easier.';
+    } elseif (is_page('gear')) {
+        $description = 'Shop curated PC components, gaming accessories, keyboards, cases, and complete setups at Lumen Nook.';
+    } elseif (is_page('inspiration')) {
+        $description = 'Explore PC and gaming setup inspiration, desk ideas, lighting, and practical guidance for your space.';
+    } elseif (is_page('sustainability-initiatives')) {
+        $description = 'Make more thoughtful technology choices with practical guidance on durable gear, repairs, energy use, and e-waste.';
+    } elseif (is_page('blogs')) {
+        $description = 'Read Lumen Nook guides, setup ideas, product news, and practical advice for better PC and gaming spaces.';
+    } elseif (is_page('login')) {
+        $description = 'Sign in to your Lumen Nook account.';
+    } elseif (is_search()) {
+        $description = 'Search Lumen Nook for PC setup guides, gear, inspiration, and practical technology advice.';
+    } else {
+        $description = 'Lumen Nook brings together PC gear, setup inspiration, and practical guidance for creating a space that feels like yours.';
+    }
+
+    return wp_trim_words(
+        wp_strip_all_tags($description),
+        28,
+        ''
+    );
+}
+
+function lumen_nook_seo_head() {
+
+    if (is_404() || is_search() || is_page('login')) {
+        echo '<meta name="robots" content="noindex,follow">' . "\n";
+    }
+
+    $description = lumen_nook_page_description();
+    $canonical = is_singular() ? get_permalink() : home_url('/');
+    $social_image = get_template_directory_uri() . '/img/LumenNookLogo.png';
+
+    if (is_singular() && has_post_thumbnail()) {
+        $social_image = get_the_post_thumbnail_url(null, 'large');
+    }
+
+    echo '<meta name="description" content="' . esc_attr($description) . '">' . "\n";
+    echo '<meta property="og:type" content="' . esc_attr(is_singular('post') ? 'article' : 'website') . '">' . "\n";
+    echo '<meta property="og:title" content="' . esc_attr(wp_get_document_title()) . '">' . "\n";
+    echo '<meta property="og:description" content="' . esc_attr($description) . '">' . "\n";
+    echo '<meta property="og:url" content="' . esc_url($canonical) . '">' . "\n";
+    echo '<meta property="og:site_name" content="Lumen Nook">' . "\n";
+    echo '<meta property="og:image" content="' . esc_url($social_image) . '">' . "\n";
+    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr(wp_get_document_title()) . '">' . "\n";
+    echo '<meta name="twitter:description" content="' . esc_attr($description) . '">' . "\n";
+    echo '<meta name="twitter:image" content="' . esc_url($social_image) . '">' . "\n";
+
+    $schema = array(
+        '@context' => 'https://schema.org',
+        '@graph' => array(
+            array(
+                '@type' => 'Organization',
+                '@id' => home_url('/#organization'),
+                'name' => 'Lumen Nook',
+                'url' => home_url('/'),
+                'logo' => array(
+                    '@type' => 'ImageObject',
+                    'url' => get_template_directory_uri() . '/img/LumenNookLogo.png'
+                )
+            ),
+            array(
+                '@type' => 'WebSite',
+                '@id' => home_url('/#website'),
+                'name' => 'Lumen Nook',
+                'url' => home_url('/'),
+                'description' => $description,
+                'publisher' => array('@id' => home_url('/#organization')),
+                'potentialAction' => array(
+                    '@type' => 'SearchAction',
+                    'target' => array(
+                        '@type' => 'EntryPoint',
+                        'urlTemplate' => home_url('/?s={search_term_string}')
+                    ),
+                    'query-input' => 'required name=search_term_string'
+                )
+            )
+        )
+    );
+
+    if (is_singular('post')) {
+        $schema['@graph'][] = array(
+            '@type' => 'Article',
+            'headline' => get_the_title(),
+            'description' => $description,
+            'mainEntityOfPage' => get_permalink(),
+            'datePublished' => get_the_date('c'),
+            'dateModified' => get_the_modified_date('c'),
+            'author' => array('@type' => 'Person', 'name' => get_the_author()),
+            'publisher' => array('@id' => home_url('/#organization')),
+            'image' => $social_image
+        );
+    }
+
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+}
+
+add_action('wp_head', 'lumen_nook_seo_head', 1);
+
+function lumen_nook_document_title_parts($parts) {
+
+    if (is_front_page()) {
+        $parts['title'] = 'PC Setup Gear, Inspiration & Advice';
+    } elseif (is_page('gear')) {
+        $parts['title'] = 'PC Gear & Gaming Accessories';
+    } elseif (is_page('inspiration')) {
+        $parts['title'] = 'PC Setup Inspiration & Desk Ideas';
+    } elseif (is_page('about-us')) {
+        $parts['title'] = 'About Lumen Nook';
+    } elseif (is_page('sustainability-initiatives')) {
+        $parts['title'] = 'Sustainable Technology Choices';
+    } elseif (is_page('blogs')) {
+        $parts['title'] = 'PC Setup Guides & Ideas';
+    } elseif (is_page('login')) {
+        $parts['title'] = 'Log In';
+    }
+
+    $parts['site'] = 'Lumen Nook';
+
+    return $parts;
+}
+
+add_filter('document_title_parts', 'lumen_nook_document_title_parts');
+
+function lumen_nook_attachment_alt($attr, $attachment) {
+
+    if (empty($attr['alt'])) {
+        $alt = get_post_meta($attachment->ID, '_wp_attachment_image_alt', true);
+        if (!$alt) {
+            $alt = get_the_title($attachment->ID);
+        }
+        if ($alt) {
+            $attr['alt'] = wp_strip_all_tags($alt);
+        }
+    }
+
+    return $attr;
+}
+
+add_filter('wp_get_attachment_image_attributes', 'lumen_nook_attachment_alt', 10, 2);
 
 function lumen_nook_ensure_blogs_page() {
 

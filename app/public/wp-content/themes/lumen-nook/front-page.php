@@ -12,9 +12,9 @@
 
     <div class="hero-content">
 
-        <h2>
+        <h1>
             Lumen Nook
-        </h2>
+        </h1>
 
         <h3>
             Your setup made simple
@@ -91,7 +91,7 @@
     <img
         class="hero-setup-image"
         src="<?php echo esc_url(get_template_directory_uri()); ?>/img/Long%20Setup%20Image%20Index.png"
-        alt="Computer setup with a mountain view"
+        alt="Wide PC gaming and work setup with a mountain view"
     >
 
     <section class="homepage-cta" aria-labelledby="homepage-cta-heading">

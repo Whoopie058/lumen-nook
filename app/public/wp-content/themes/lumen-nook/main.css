@@ -699,7 +699,7 @@ h6 {
     text-align: center;
 }
 
-.hero-content h2 {
+.hero-content h1 {
     font-size: clamp(28px, 4vw, 52px);
     line-height: 1.1;
 }
@@ -1720,7 +1720,7 @@ h6 {
     text-transform: uppercase;
 }
 
-.shop-intro h2 {
+.shop-intro h1 {
     margin: 18px 0;
     color: #f4f3fb;
     font-size: clamp(42px, 7vw, 82px);
@@ -1728,7 +1728,7 @@ h6 {
     text-transform: uppercase;
 }
 
-.shop-intro h2 span {
+.shop-intro h1 span {
     color: var(--purple);
 }
 

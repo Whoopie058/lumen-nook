@@ -7,7 +7,7 @@ $product_image_uri = $theme_uri . '/img/Products/optimized/';
 <main class="gear-main">
     <section class="shop-intro" aria-labelledby="shop-title">
         <p class="shop-eyebrow">Lumen Nook / Curated hardware</p>
-        <h2 id="shop-title">Build your<br><span>perfect nook.</span></h2>
+        <h1 id="shop-title">Build your<br><span>perfect nook.</span></h1>
         <p>Thoughtful components and complete setups for late-night ideas, bright wins, and everything in between.</p>
     </section>
 

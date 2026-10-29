@@ -8,9 +8,8 @@
             <p class="lumen-about__lead">Lumen Nook helps you create a PC setup that fits your personality, your needs, and your budget.</p>
             <p>From the equipment on your desk to the details that make it feel like yours, we bring gear, ideas, and approachable guidance together in one place.</p>
         </div>
-        <div class="lumen-about__placeholder lumen-about__placeholder--hero" role="img" aria-label="Image placeholder for a Lumen Nook setup">
-            <span>Image placeholder</span>
-            <small>Future setup photography</small>
+        <div class="lumen-about__placeholder lumen-about__placeholder--hero">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/Guy with Setup.jpg'); ?>" alt="A person using a Lumen Nook PC setup" loading="eager" fetchpriority="high" decoding="async">
         </div>
     </section>
 
@@ -54,9 +53,8 @@
     </section>
 
     <section class="lumen-about__story">
-        <div class="lumen-about__placeholder" role="img" aria-label="Image placeholder for a personalised desk setup">
-            <span>Image placeholder</span>
-            <small>Future workspace photography</small>
+        <div class="lumen-about__placeholder">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/Workstation.jpg'); ?>" alt="A personalised Lumen Nook workstation" loading="lazy" decoding="async">
         </div>
         <div class="lumen-about__story-copy">
             <p class="lumen-about__eyebrow">Our mission</p>

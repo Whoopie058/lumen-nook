@@ -1,4 +1,7 @@
-<?php get_header(); ?>
+<?php
+get_header();
+$theme_uri = get_template_directory_uri();
+?>
 
 <main class="lumen-sustainability">
     <section class="lumen-sustainability__hero">
@@ -8,9 +11,8 @@
             <p class="lumen-sustainability__lead">Technology should make life better without creating unnecessary waste. At Lumen Nook, we believe in making smarter choices: choosing reliable equipment, extending the life of existing devices, and being more mindful of the resources behind the technology we use every day.</p>
             <p>Sustainability is not about having the newest technology. It is about making the most of what we already have.</p>
         </div>
-        <div class="lumen-sustainability__placeholder lumen-sustainability__placeholder--hero" role="img" aria-label="Image placeholder for a sustainable technology setup">
-            <span>Image placeholder</span>
-            <small>Future hero artwork</small>
+        <div class="lumen-sustainability__placeholder lumen-sustainability__placeholder--hero lumen-sustainability__image">
+            <img src="<?php echo esc_url($theme_uri . '/img/Sustainable Sunset Tech Workspace.png'); ?>" alt="Sustainable technology workspace glowing at sunset" loading="eager" fetchpriority="high" decoding="async">
         </div>
     </section>
 
@@ -22,16 +24,14 @@
             <p>When comparing gear, look for manufacturers that make repairs possible, provide replacement parts, and explain their environmental policies clearly. Recycled materials, responsible packaging, energy efficiency, and a product’s expected lifespan can all be useful signals.</p>
             <p>That does not make one purchase automatically sustainable, and we will not make claims about a company without evidence. It simply gives us better questions to ask. If your current equipment still performs well, avoiding an unnecessary upgrade may be the most responsible choice of all.</p>
         </div>
-        <div class="lumen-sustainability__placeholder" role="img" aria-label="Image placeholder for durable computer equipment">
-            <span>Image placeholder</span>
-            <small>Future gear photography</small>
+        <div class="lumen-sustainability__placeholder lumen-sustainability__image">
+            <img src="<?php echo esc_url($theme_uri . '/img/Cozy Sustainable PC Repair Workshop.png'); ?>" alt="Cozy sustainable PC repair workshop with components ready for maintenance" loading="lazy" decoding="async">
         </div>
     </section>
 
     <section class="lumen-sustainability__section lumen-sustainability__section--image-left">
-        <div class="lumen-sustainability__placeholder" role="img" aria-label="Image placeholder for thoughtful AI and computing use">
-            <span>Image placeholder</span>
-            <small>Future AI or server illustration</small>
+        <div class="lumen-sustainability__placeholder lumen-sustainability__image">
+            <img src="<?php echo esc_url($theme_uri . '/img/AI.jpg'); ?>" alt="Abstract blue AI-inspired network of glowing data lines" loading="lazy" decoding="async">
         </div>
         <div class="lumen-sustainability__copy">
             <p class="lumen-sustainability__eyebrow">02 / Using technology thoughtfully</p>
@@ -55,16 +55,14 @@
             </ul>
             <p>These actions do not all have the same impact, and there is no single perfect checklist. Together, they encourage a more considered balance between the energy a setup uses and the impact of producing a replacement.</p>
         </div>
-        <div class="lumen-sustainability__placeholder" role="img" aria-label="Image placeholder for an energy-conscious computer setup">
-            <span>Image placeholder</span>
-            <small>Future energy-use illustration</small>
+        <div class="lumen-sustainability__placeholder lumen-sustainability__image">
+            <img src="<?php echo esc_url($theme_uri . '/img/Sunset Glow Over Industrial Plant.png'); ?>" alt="Industrial energy plant glowing in the warm light of sunset" loading="lazy" decoding="async">
         </div>
     </section>
 
     <section class="lumen-sustainability__section lumen-sustainability__section--image-left">
-        <div class="lumen-sustainability__placeholder" role="img" aria-label="Image placeholder for repairable PC components">
-            <span>Image placeholder</span>
-            <small>Future component photography</small>
+        <div class="lumen-sustainability__placeholder lumen-sustainability__image">
+            <img src="<?php echo esc_url($theme_uri . '/img/Golden Hour E-Waste Recycling Yard.png'); ?>" alt="E-waste recycling yard glowing in golden-hour light" loading="lazy" decoding="async">
         </div>
         <div class="lumen-sustainability__copy">
             <p class="lumen-sustainability__eyebrow">04 / Keep what works</p>

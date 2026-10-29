@@ -84,6 +84,15 @@
     font-size: 11px;
 }
 .lumen-about__placeholder--hero { min-height: 500px; }
+.lumen-about__placeholder img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 330px;
+    object-fit: cover;
+    object-position: center;
+}
+.lumen-about__placeholder--hero img { min-height: 500px; }
 .lumen-about__mission, .lumen-about__services, .lumen-about__story, .lumen-about__cta {
     border-top: 1px solid #34384c;
 }
@@ -163,6 +172,7 @@
     }
     .lumen-about__hero { min-height: 0; }
     .lumen-about__placeholder, .lumen-about__placeholder--hero { min-height: 280px; }
+    .lumen-about__placeholder img, .lumen-about__placeholder--hero img { min-height: 280px; }
     .lumen-about__service-grid { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {

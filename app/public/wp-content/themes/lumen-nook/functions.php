@@ -13,7 +13,7 @@ function lumen_nook_enqueue_styles() {
         'lumen-nook-main',
         get_template_directory_uri() . '/main.css',
         array('lumen-nook-space-mono'),
-        '1.2'
+        '1.5'
     );
 
     if (is_page('sustainability-initiatives')) {
@@ -25,12 +25,21 @@ function lumen_nook_enqueue_styles() {
         );
     }
 
+    if (is_page('inspiration')) {
+        wp_enqueue_style(
+            'lumen-nook-inspiration',
+            get_template_directory_uri() . '/inspiration.css',
+            array('lumen-nook-main'),
+            '1.0'
+        );
+    }
+
     if (is_page('about-us')) {
         wp_enqueue_style(
             'lumen-nook-about',
             get_template_directory_uri() . '/about.css',
             array('lumen-nook-main'),
-            '1.0'
+            '1.2'
         );
     }
 
@@ -77,7 +86,8 @@ function lumen_nook_ensure_blogs_page() {
     if (
         get_option('lumen_nook_blogs_page_created') &&
         get_option('lumen_nook_gear_page_created') &&
-        get_option('lumen_nook_login_page_created')
+        get_option('lumen_nook_login_page_created') &&
+        get_option('lumen_nook_inspiration_page_created')
     ) {
         return;
     }
@@ -126,6 +136,21 @@ function lumen_nook_ensure_blogs_page() {
     }
 
     update_option('lumen_nook_login_page_created', true);
+
+    $inspiration_page = get_page_by_path('inspiration');
+
+    if (!$inspiration_page) {
+        wp_insert_post(
+            array(
+                'post_title' => 'Inspiration',
+                'post_name' => 'inspiration',
+                'post_status' => 'publish',
+                'post_type' => 'page'
+            )
+        );
+    }
+
+    update_option('lumen_nook_inspiration_page_created', true);
 }
 
 add_action('after_setup_theme', 'lumen_nook_ensure_blogs_page');

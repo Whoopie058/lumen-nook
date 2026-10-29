@@ -57,6 +57,7 @@
     <div class="nav-actions">
 
         <form
+            class="nav-search"
             role="search"
             method="get"
             action="<?php echo esc_url(home_url('/')); ?>"
@@ -68,51 +69,47 @@
                 name="s"
                 placeholder="Search"
                 aria-label="Search"
+                <?php if (is_page('gear')) : ?>id="shop-search"<?php endif; ?>
             >
 
         </form>
 
-
-        <a class="blogs-tab" href="<?php echo esc_url(home_url('/gear/')); ?>">
-            Shop gear
-        </a>
-
-        <a
-            class="profile-tab"
-            href="<?php echo esc_url(is_user_logged_in() ? admin_url('profile.php') : home_url('/login/')); ?>"
-            aria-label="Profile"
-        >
-
-            <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/img/Profile.png"
-                alt=""
-                class="profile-image"
-            >
-
-        </a>
-
-        <a class="blogs-tab" href="<?php echo esc_url(home_url('/blogs/')); ?>">
-            Blogs
-        </a>
+        <?php if (is_page('gear')) : ?>
+            <button class="basket-toggle" type="button" aria-controls="basket-panel" aria-expanded="false">
+                <span class="basket-icon" aria-hidden="true">⌑</span>
+                <span>Basket</span>
+                <span class="basket-count" aria-live="polite">0</span>
+            </button>
+        <?php endif; ?>
 
         <details class="dropdown-menu">
 
             <summary>
-                Menu
+                <span class="menu-label">Menu</span>
+                <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
             </summary>
 
             <div class="dropdown-content">
-
                 <?php
-
-                wp_nav_menu(
-                    array(
-                        'theme_location' => 'primary-menu',
-                        'container' => false
-                    )
+                $navigation_pages = array(
+                    array('Home', home_url('/'), is_front_page()),
+                    array('About Us', get_permalink(get_page_by_path('about-us')), is_page('about-us')),
+                    array('Blogs', get_permalink(get_page_by_path('blogs')), is_page('blogs') || is_singular('post')),
+                    array('Shop Gear', get_permalink(get_page_by_path('gear')), is_page('gear')),
+                    array('Inspiration', get_permalink(get_page_by_path('inspiration')), is_page('inspiration')),
+                    array('Sustainability Initiatives', get_permalink(get_page_by_path('sustainability-initiatives')), is_page('sustainability-initiatives')),
+                    array('Login', get_permalink(get_page_by_path('login')), is_page('login'))
                 );
-
-                ?>
+                foreach ($navigation_pages as $navigation_page) :
+                    if (!$navigation_page[1]) {
+                        continue;
+                    }
+                    ?>
+                    <a class="dropdown-link<?php echo $navigation_page[2] ? ' is-active' : ''; ?>" href="<?php echo esc_url($navigation_page[1]); ?>"<?php echo $navigation_page[2] ? ' aria-current="page"' : ''; ?>>
+                        <span><?php echo esc_html($navigation_page[0]); ?></span>
+                        <span class="dropdown-arrow" aria-hidden="true">→</span>
+                    </a>
+                <?php endforeach; ?>
 
             </div>
 

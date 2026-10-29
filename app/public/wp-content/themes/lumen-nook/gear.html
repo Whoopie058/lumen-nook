@@ -6,57 +6,138 @@
     <title>Shop Gear | Lumen Nook</title>
     <link rel="stylesheet" href="main.css">
 </head>
-<body>
-        <div class="container"></div>
-    <!-- navigation -->
+<body class="gear-page">
     <nav class="navigation fixed">
         <div class="menu-container">
             <a class="logo-link" href="index.html"><img src="img/LumenNookLogo.png" alt="Lumen Nook Logo" class="logo"></a>
             <h1 class="logo-text"><a class="logo-text-link" href="index.html">Lumen Nook</a></h1>
         </div>
         <div class="nav-actions">
-            <input class="search-bar" type="search" placeholder="Search" aria-label="Search">
-            <button type="button">temp</button>
-            <button type="button">temp</button>
+            <label class="sr-only" for="shop-search">Search products</label>
+            <input id="shop-search" class="search-bar" type="search" placeholder="Search gear" aria-label="Search products">
+            <button class="basket-toggle" type="button" aria-controls="basket-panel" aria-expanded="false">
+                Basket <span class="basket-count" aria-live="polite">0</span>
+            </button>
             <details class="dropdown-menu">
                 <summary>Menu</summary>
-                <div class="dropdown-content">
-                </div>
+                <div class="dropdown-content"></div>
             </details>
         </div>
     </nav>
 
-    <!-- Footer -->
+    <main class="gear-main">
+        <section class="shop-intro" aria-labelledby="shop-title">
+            <p class="shop-eyebrow">Lumen Nook / Curated hardware</p>
+            <h2 id="shop-title">Build your<br><span>perfect nook.</span></h2>
+            <p>Thoughtful components and complete setups for late-night ideas, bright wins, and everything in between.</p>
+        </section>
+
+        <section class="shop-layout" aria-label="Gear shop">
+            <div class="shop-catalog">
+                <div class="shop-toolbar">
+                    <div class="category-filters" role="group" aria-label="Filter by category">
+                        <button class="filter-button is-active" type="button" data-category="all">All gear</button>
+                        <button class="filter-button" type="button" data-category="GPUs">GPUs</button>
+                        <button class="filter-button" type="button" data-category="CPUs">CPUs</button>
+                        <button class="filter-button" type="button" data-category="PC cases">PC cases</button>
+                        <button class="filter-button" type="button" data-category="Keyboards">Keyboards</button>
+                        <button class="filter-button" type="button" data-category="Gaming setups">Gaming setups</button>
+                    </div>
+                    <p class="result-count" aria-live="polite"></p>
+                </div>
+                <div class="product-grid">
+                    <article class="product-card" data-category="GPUs" data-name="Vexora Warden GX90" data-price="7499">
+                        <div class="product-image-wrap"><img src="img/Products/Vexora-Warden-GX90.jpg" alt="Vexora Warden GX90 graphics card" class="product-image" loading="lazy"><span class="product-badge">Bestseller</span></div>
+                        <div class="product-card-content"><p class="product-category">GPU / Vexora</p><h3>Warden GX90</h3><div class="product-card-footer"><strong>7.499 kr.</strong><button class="add-to-basket" type="button" data-product="vexora-gx90">Add to Basket</button></div></div>
+                    </article>
+                    <article class="product-card" data-category="GPUs" data-name="Vexora Warden GX90 Doom Edition" data-price="8299">
+                        <div class="product-image-wrap"><img src="img/Products/Vexora-Warden-GX90-Doom-Edition.jpg" alt="Vexora Warden GX90 Doom Edition graphics card" class="product-image" loading="lazy"><span class="product-badge product-badge-pink">Limited</span></div>
+                        <div class="product-card-content"><p class="product-category">GPU / Vexora</p><h3>Warden GX90 Doom Edition</h3><div class="product-card-footer"><strong>8.299 kr.</strong><button class="add-to-basket" type="button" data-product="vexora-doom">Add to Basket</button></div></div>
+                    </article>
+                    <article class="product-card" data-category="CPUs" data-name="Syntrix Ryzenova R7 370" data-price="2199">
+                        <div class="product-image-wrap"><img src="img/Products/Syntrix-Ryzenova-R7-370.jpg" alt="Syntrix Ryzenova R7 370 processor" class="product-image" loading="lazy"></div>
+                        <div class="product-card-content"><p class="product-category">CPU / Syntrix</p><h3>Ryzenova R7 370</h3><div class="product-card-footer"><strong>2.199 kr.</strong><button class="add-to-basket" type="button" data-product="syntrix-r7">Add to Basket</button></div></div>
+                    </article>
+                    <article class="product-card" data-category="CPUs" data-name="Veltrix CoreMax i9 900" data-price="3199">
+                        <div class="product-image-wrap"><img src="img/Products/Veltrix-CoreMax-i9-900.jpg" alt="Veltrix CoreMax i9 900 processor" class="product-image" loading="lazy"></div>
+                        <div class="product-card-content"><p class="product-category">CPU / Veltrix</p><h3>CoreMax i9 900</h3><div class="product-card-footer"><strong>3.199 kr.</strong><button class="add-to-basket" type="button" data-product="veltrix-i9">Add to Basket</button></div></div>
+                    </article>
+                    <article class="product-card" data-category="PC cases" data-name="Arclume Frostline T4" data-price="1299">
+                        <div class="product-image-wrap"><img src="img/Products/Arclume-Frostline-T4.jpg" alt="Arclume Frostline T4 PC case" class="product-image" loading="lazy"></div>
+                        <div class="product-card-content"><p class="product-category">PC case / Arclume</p><h3>Frostline T4</h3><div class="product-card-footer"><strong>1.299 kr.</strong><button class="add-to-basket" type="button" data-product="arclume-t4">Add to Basket</button></div></div>
+                    </article>
+                    <article class="product-card" data-category="PC cases" data-name="Nexalis Glacier X7" data-price="1699">
+                        <div class="product-image-wrap"><img src="img/Products/Nexalis-Glacier-X7.jpg" alt="Nexalis Glacier X7 PC case" class="product-image" loading="lazy"></div>
+                        <div class="product-card-content"><p class="product-category">PC case / Nexalis</p><h3>Glacier X7</h3><div class="product-card-footer"><strong>1.699 kr.</strong><button class="add-to-basket" type="button" data-product="nexalis-glacier">Add to Basket</button></div></div>
+                    </article>
+                    <article class="product-card" data-category="Gaming setups" data-name="Nexalis Halo X9 Gaming Setup" data-price="14999">
+                        <div class="product-image-wrap"><img src="img/Products/Nexalis-Halo-X9.jpg" alt="Nexalis Halo X9 gaming setup" class="product-image" loading="lazy"><span class="product-badge">Ready to play</span></div>
+                        <div class="product-card-content"><p class="product-category">Gaming setup / Nexalis</p><h3>Halo X9</h3><div class="product-card-footer"><strong>14.999 kr.</strong><button class="add-to-basket" type="button" data-product="nexalis-halo">Add to Basket</button></div></div>
+                    </article>
+                    <article class="product-card" data-category="Keyboards" data-name="Keyvora Ember 75" data-price="899">
+                        <div class="product-image-wrap"><img src="img/Products/Keyvora-Ember-75.jpg" alt="Keyvora Ember 75 keyboard" class="product-image" loading="lazy"></div>
+                        <div class="product-card-content"><p class="product-category">Keyboard / Keyvora</p><h3>Ember 75</h3><div class="product-card-footer"><strong>899 kr.</strong><button class="add-to-basket" type="button" data-product="keyvora-ember">Add to Basket</button></div></div>
+                    </article>
+                    <article class="product-card" data-category="Keyboards" data-name="Keyvora Slate TKL" data-price="799">
+                        <div class="product-image-wrap"><img src="img/Products/Keyvora-Slate-TKL.jpg" alt="Keyvora Slate TKL keyboard" class="product-image" loading="lazy"></div>
+                        <div class="product-card-content"><p class="product-category">Keyboard / Keyvora</p><h3>Slate TKL</h3><div class="product-card-footer"><strong>799 kr.</strong><button class="add-to-basket" type="button" data-product="keyvora-slate">Add to Basket</button></div></div>
+                    </article>
+                </div>
+                <p class="no-results" hidden>No gear matches that search. Try another category or phrase.</p>
+            </div>
+
+            <aside class="basket-panel" id="basket-panel" aria-label="Your basket">
+                <div class="basket-heading"><div><p class="shop-eyebrow">Your selection</p><h2>Your basket</h2></div><button class="basket-close" type="button" aria-label="Close basket">×</button></div>
+                <div class="basket-items"><p class="basket-empty">Your basket is waiting for its first upgrade.</p></div>
+                <div class="basket-summary"><div><span>Subtotal</span><strong class="basket-total">0 kr.</strong></div><button class="checkout-button" type="button">Checkout <span aria-hidden="true">→</span></button><p class="checkout-note">Fictional shop · no payment required</p></div>
+            </aside>
+        </section>
+    </main>
+
     <footer class="footer">
-        <div class="footer-column">
-            <h2>Information</h2>
-            <a href="aboutus.html">About Lumen Nook</a>
-            <a href="#">Contact us</a>
-            <a href="#">Privacy policy</a>
-            <a href="#">Cookie policy</a>
-        </div>
-        <div class="footer-column">
-            <h2>Pages</h2>
-            <a href="#">Home</a>
-            <a href="#">Shop gear</a>
-            <a href="#">Recipes</a>
-            <a href="#">Favourites</a>
-        </div>
-        <div class="footer-column">
-            <h2>Support</h2>
-            <a href="#">Help centre</a>
-            <a href="#">Frequently asked questions</a>
-            <a href="#">Shipping information</a>
-            <a href="#">Returns</a>
-        </div>
-        <div class="footer-column">
-            <h2>Inspiration</h2>
-            <a href="#">Kitchen ideas</a>
-            <a href="#">Featured recipes</a>
-            <a href="#">Lumen Nook journal</a>
-            <a href="#">Seasonal picks</a>
-        </div>
+        <div class="footer-column"><h2>Information</h2><a href="aboutus.html">About Lumen Nook</a><a href="#">Contact us</a><a href="#">Privacy policy</a><a href="#">Cookie policy</a></div>
+        <div class="footer-column"><h2>Pages</h2><a href="index.html">Home</a><a href="gear.html">Shop gear</a><a href="#">Recipes</a><a href="#">Favourites</a></div>
+        <div class="footer-column"><h2>Support</h2><a href="#">Help centre</a><a href="#">Frequently asked questions</a><a href="#">Shipping information</a><a href="#">Returns</a></div>
+        <div class="footer-column"><h2>Inspiration</h2><a href="#">Kitchen ideas</a><a href="#">Featured recipes</a><a href="#">Lumen Nook journal</a><a href="#">Seasonal picks</a></div>
     </footer>
 
+    <script>
+        (() => {
+            const products = [...document.querySelectorAll(".product-card")].reduce((map, card) => {
+                const button = card.querySelector(".add-to-basket");
+                map[button.dataset.product] = { id: button.dataset.product, name: card.dataset.name, price: Number(card.dataset.price) };
+                return map;
+            }, {});
+            let basket = {};
+            const formatter = new Intl.NumberFormat("da-DK", { maximumFractionDigits: 0 });
+            const formatPrice = (value) => `${formatter.format(value)} kr.`;
+            const basketItems = document.querySelector(".basket-items");
+            const basketTotal = document.querySelector(".basket-total");
+            const basketCount = document.querySelector(".basket-count");
+            const renderBasket = () => {
+                const entries = Object.values(basket);
+                const count = entries.reduce((sum, item) => sum + item.quantity, 0);
+                basketCount.textContent = count;
+                basketTotal.textContent = formatPrice(entries.reduce((sum, item) => sum + item.price * item.quantity, 0));
+                basketItems.innerHTML = entries.length ? entries.map((item) => `<div class="basket-item"><div><strong>${item.name}</strong><span>${formatPrice(item.price)} each</span></div><div class="quantity-control"><button type="button" data-action="decrease" data-product="${item.id}" aria-label="Decrease ${item.name} quantity">−</button><span>${item.quantity}</span><button type="button" data-action="increase" data-product="${item.id}" aria-label="Increase ${item.name} quantity">+</button></div><button class="remove-item" type="button" data-action="remove" data-product="${item.id}">Remove</button></div>`).join("") : '<p class="basket-empty">Your basket is waiting for its first upgrade.</p>';
+            };
+            const saveBasket = () => { localStorage.setItem("lumen-nook-basket", JSON.stringify(basket)); };
+            try { basket = JSON.parse(localStorage.getItem("lumen-nook-basket") || "{}"); } catch (error) { basket = {}; }
+            Object.keys(basket).forEach((id) => { if (!products[id]) delete basket[id]; });
+            document.querySelectorAll(".add-to-basket").forEach((button) => button.addEventListener("click", () => { const product = products[button.dataset.product]; basket[product.id] = { ...product, quantity: (basket[product.id]?.quantity || 0) + 1 }; saveBasket(); renderBasket(); button.textContent = "Added"; setTimeout(() => { button.textContent = "Add to Basket"; }, 900); }));
+            basketItems.addEventListener("click", (event) => { const button = event.target.closest("button[data-product]"); if (!button) return; const item = basket[button.dataset.product]; if (button.dataset.action === "remove" || (button.dataset.action === "decrease" && item.quantity === 1)) delete basket[button.dataset.product]; else item.quantity += button.dataset.action === "increase" ? 1 : -1; saveBasket(); renderBasket(); });
+            const basketPanel = document.querySelector(".basket-panel");
+            document.querySelector(".basket-toggle").addEventListener("click", () => { const isOpen = basketPanel.classList.toggle("is-open"); document.querySelector(".basket-toggle").setAttribute("aria-expanded", isOpen); });
+            document.querySelector(".basket-close").addEventListener("click", () => { basketPanel.classList.remove("is-open"); document.querySelector(".basket-toggle").setAttribute("aria-expanded", "false"); });
+            document.querySelector(".checkout-button").addEventListener("click", () => { alert("This is a fictional shop — checkout is not connected to a payment system."); });
+            const filterButtons = document.querySelectorAll(".filter-button");
+            const resultCount = document.querySelector(".result-count");
+            const noResults = document.querySelector(".no-results");
+            const applyFilters = () => { const category = document.querySelector(".filter-button.is-active").dataset.category; const search = document.querySelector("#shop-search").value.trim().toLowerCase(); let visible = 0; document.querySelectorAll(".product-card").forEach((card) => { const matches = (category === "all" || card.dataset.category === category) && card.dataset.name.toLowerCase().includes(search); card.hidden = !matches; if (matches) visible++; }); resultCount.textContent = `${visible} ${visible === 1 ? "piece" : "pieces"} of gear`; noResults.hidden = visible !== 0; };
+            filterButtons.forEach((button) => button.addEventListener("click", () => { filterButtons.forEach((item) => item.classList.remove("is-active")); button.classList.add("is-active"); applyFilters(); }));
+            document.querySelector("#shop-search").addEventListener("input", applyFilters);
+            renderBasket(); applyFilters();
+        })();
+    </script>
 </body>
 </html>

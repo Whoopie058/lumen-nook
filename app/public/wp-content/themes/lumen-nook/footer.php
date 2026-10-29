@@ -1,28 +1,33 @@
 <!-- Footer -->
 
+<?php
+$footer_pages = array(
+    array('Home', home_url('/')),
+    array('About Lumen Nook', get_permalink(get_page_by_path('about-us'))),
+    array('Shop Gear', get_permalink(get_page_by_path('gear'))),
+    array('Inspiration', get_permalink(get_page_by_path('inspiration'))),
+    array('Blogs', get_permalink(get_page_by_path('blogs'))),
+    array('Sustainability Initiatives', get_permalink(get_page_by_path('sustainability-initiatives'))),
+    array('Login', get_permalink(get_page_by_path('login')))
+);
+?>
+
 <footer class="footer">
 
     <div class="footer-column">
 
         <h2>
-            Information
+            Explore
         </h2>
 
-        <a href="<?php echo esc_url(home_url('/about-us/')); ?>">
-            About Lumen Nook
-        </a>
-
-        <a href="<?php echo esc_url(home_url('/contact/')); ?>">
-            Contact us
-        </a>
-
-        <a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">
-            Privacy policy
-        </a>
-
-        <a href="<?php echo esc_url(home_url('/cookie-policy/')); ?>">
-            Cookie policy
-        </a>
+        <?php foreach (array_slice($footer_pages, 0, 4) as $footer_page) : ?>
+            <?php if (!$footer_page[1]) {
+                continue;
+            } ?>
+            <a href="<?php echo esc_url($footer_page[1]); ?>">
+                <?php echo esc_html($footer_page[0]); ?>
+            </a>
+        <?php endforeach; ?>
 
     </div>
 
@@ -30,78 +35,17 @@
     <div class="footer-column">
 
         <h2>
-            Pages
+            Lumen Nook
         </h2>
 
-        <a href="<?php echo esc_url(home_url('/')); ?>">
-            Home
-        </a>
-
-        <a href="<?php echo esc_url(home_url('/gear/')); ?>">
-            Shop gear
-        </a>
-
-        <a href="<?php echo esc_url(home_url('/inspiration/')); ?>">
-            Inspiration
-        </a>
-
-        <a href="<?php echo esc_url(home_url('/blogs/')); ?>">
-            Blogs
-        </a>
-
-        <a href="<?php echo esc_url(home_url('/favourites/')); ?>">
-            Favourites
-        </a>
-
-    </div>
-
-
-    <div class="footer-column">
-
-        <h2>
-            Support
-        </h2>
-
-        <a href="<?php echo esc_url(home_url('/help/')); ?>">
-            Help centre
-        </a>
-
-        <a href="<?php echo esc_url(home_url('/faq/')); ?>">
-            Frequently asked questions
-        </a>
-
-        <a href="<?php echo esc_url(home_url('/shipping/')); ?>">
-            Shipping information
-        </a>
-
-        <a href="<?php echo esc_url(home_url('/returns/')); ?>">
-            Returns
-        </a>
-
-    </div>
-
-
-    <div class="footer-column">
-
-        <h2>
-            Inspiration
-        </h2>
-
-        <a href="<?php echo esc_url(home_url('/setup-ideas/')); ?>">
-            Setup ideas
-        </a>
-
-        <a href="<?php echo esc_url(home_url('/featured-setups/')); ?>">
-            Featured setups
-        </a>
-
-        <a href="<?php echo esc_url(home_url('/journal/')); ?>">
-            Lumen Nook journal
-        </a>
-
-        <a href="<?php echo esc_url(home_url('/seasonal-picks/')); ?>">
-            Seasonal picks
-        </a>
+        <?php foreach (array_slice($footer_pages, 4) as $footer_page) : ?>
+            <?php if (!$footer_page[1]) {
+                continue;
+            } ?>
+            <a href="<?php echo esc_url($footer_page[1]); ?>">
+                <?php echo esc_html($footer_page[0]); ?>
+            </a>
+        <?php endforeach; ?>
 
     </div>
 

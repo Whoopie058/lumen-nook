@@ -97,7 +97,7 @@
                     array('Home', home_url('/'), is_front_page()),
                     array('About Us', get_permalink(get_page_by_path('about-us')), is_page('about-us')),
                     array('Blogs', get_permalink(get_page_by_path('blogs')), is_page('blogs') || is_singular('post')),
-                    array('Shop Gear', get_permalink(get_page_by_path('gear')), is_page('gear')),
+                    array('Shop Gear', function_exists('wc_get_page_permalink') ? wc_get_page_permalink('shop') : get_permalink(get_page_by_path('gear')), function_exists('is_shop') && is_shop()),
                     array('Inspiration', get_permalink(get_page_by_path('inspiration')), is_page('inspiration')),
                     array('Sustainability Initiatives', get_permalink(get_page_by_path('sustainability-initiatives')), is_page('sustainability-initiatives')),
                     array('Login', get_permalink(get_page_by_path('login')), is_page('login'))

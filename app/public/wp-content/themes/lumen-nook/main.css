@@ -1876,6 +1876,27 @@ h6 {
     padding: 18px;
 }
 
+.product-card-link,
+.product-card-title {
+    color: inherit;
+    text-decoration: none;
+}
+
+.product-card-link {
+    display: block;
+}
+
+.product-card-link:focus-visible,
+.product-card-title:focus-visible {
+    outline: 2px solid var(--cyan-buttons);
+    outline-offset: -2px;
+}
+
+.product-card-title:hover,
+.product-card-title:focus-visible {
+    color: var(--cyan-buttons);
+}
+
 .product-category {
     margin: 0;
     font-size: 10px;
@@ -2074,6 +2095,381 @@ h6 {
     padding: 40px 0;
     color: var(--blue-grey);
     text-align: center;
+}
+
+/* Classic WooCommerce cart and checkout */
+.lumen-woocommerce-page {
+    min-height: 60vh;
+    padding: 130px 20px 90px;
+    color: var(--light-grey);
+    background:
+        radial-gradient(circle at 75% 4%, rgba(169, 112, 255, 0.13), transparent 28rem),
+        var(--background-color-navigation);
+}
+
+.lumen-woocommerce-shell {
+    width: min(100%, 1160px);
+    margin: 0 auto;
+}
+
+.lumen-woocommerce-title {
+    margin: 12px 0 34px;
+    color: #f4f3fb;
+    font-size: clamp(38px, 6vw, 68px);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.lumen-woocommerce-page .woocommerce {
+    color: var(--light-grey);
+}
+
+.lumen-woocommerce-page .woocommerce-error,
+.lumen-woocommerce-page .woocommerce-info,
+.lumen-woocommerce-page .woocommerce-message {
+    margin: 0 0 24px;
+    color: var(--light-grey);
+    background: #1b1d27;
+    border: 1px solid #4b4268;
+    border-top: 3px solid var(--purple);
+    border-radius: 10px;
+}
+
+.lumen-woocommerce-page .woocommerce-error::before,
+.lumen-woocommerce-page .woocommerce-info::before,
+.lumen-woocommerce-page .woocommerce-message::before {
+    color: var(--cyan-buttons);
+}
+
+.lumen-woocommerce-page .woocommerce a {
+    color: var(--cyan-buttons);
+}
+
+.lumen-woocommerce-page .woocommerce a:hover,
+.lumen-woocommerce-page .woocommerce a:focus-visible {
+    color: var(--pink);
+}
+
+.lumen-woocommerce-page .woocommerce h2,
+.lumen-woocommerce-page .woocommerce h3,
+.lumen-woocommerce-page .woocommerce legend {
+    color: #f4f3fb;
+}
+
+.lumen-woocommerce-page .woocommerce table.shop_table {
+    overflow: hidden;
+    color: var(--light-grey);
+    background: #1b1d27;
+    border: 1px solid #34384c;
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.lumen-cart-page .woocommerce-cart-form {
+    margin-bottom: 28px;
+}
+
+.lumen-cart-page .woocommerce table.shop_table th,
+.lumen-cart-page .woocommerce table.shop_table td {
+    padding: 18px 16px;
+    border-color: #34384c;
+    vertical-align: middle;
+}
+
+.lumen-cart-page .woocommerce table.shop_table th {
+    color: var(--blue-grey);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.lumen-cart-page .product-thumbnail img {
+    width: 76px;
+    height: 76px;
+    margin: 0;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.lumen-cart-page .product-name a {
+    color: #f4f3fb;
+    font-weight: 700;
+}
+
+.lumen-cart-page .product-price,
+.lumen-cart-page .product-subtotal,
+.lumen-cart-page .cart-subtotal,
+.lumen-cart-page .order-total {
+    color: #f4f3fb;
+}
+
+.lumen-cart-page .product-remove a {
+    color: var(--pink) !important;
+    font-size: 22px;
+}
+
+.lumen-woocommerce-page .quantity .qty,
+.lumen-woocommerce-page input.input-text,
+.lumen-woocommerce-page select,
+.lumen-woocommerce-page textarea {
+    min-height: 44px;
+    box-sizing: border-box;
+    color: #f4f3fb;
+    font: inherit;
+    background: #12131a;
+    border: 1px solid #4b4268;
+    border-radius: 6px;
+}
+
+.lumen-woocommerce-page .quantity .qty {
+    width: 76px;
+    padding: 8px;
+}
+
+.lumen-woocommerce-page input.input-text,
+.lumen-woocommerce-page select,
+.lumen-woocommerce-page textarea {
+    width: 100%;
+    padding: 10px 12px;
+}
+
+.lumen-woocommerce-page input:focus,
+.lumen-woocommerce-page select:focus,
+.lumen-woocommerce-page textarea:focus {
+    border-color: var(--cyan-buttons);
+    outline: 2px solid rgba(143, 211, 255, 0.25);
+    outline-offset: 1px;
+}
+
+.lumen-woocommerce-page label,
+.lumen-woocommerce-page .woocommerce form .form-row label,
+.lumen-woocommerce-page .woocommerce-shipping-methods,
+.lumen-woocommerce-page .woocommerce form .form-row .required {
+    color: var(--light-grey);
+}
+
+.lumen-cart-page .cart-collaterals .cart_totals,
+.lumen-checkout-page .woocommerce-checkout #order_review,
+.lumen-checkout-page .woocommerce-checkout #customer_details > div {
+    padding: 24px;
+    background: #1b1d27;
+    border: 1px solid #34384c;
+    border-radius: 10px;
+}
+
+.lumen-cart-page .cart-collaterals .cart_totals h2,
+.lumen-checkout-page #order_review_heading {
+    margin-top: 0;
+    color: #f4f3fb;
+}
+
+.lumen-cart-page .cart-collaterals .cart_totals {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.lumen-cart-page .cart-collaterals .cart_totals table {
+    margin-bottom: 20px;
+}
+
+.lumen-woocommerce-page .button,
+.lumen-woocommerce-page button.button,
+.lumen-woocommerce-page a.button,
+.lumen-woocommerce-page #place_order {
+    color: #12131a;
+    font: inherit;
+    font-weight: 700;
+    background: var(--cyan-buttons);
+    border: 1px solid var(--cyan-buttons);
+    border-radius: 6px;
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.lumen-woocommerce-page .button:hover,
+.lumen-woocommerce-page .button:focus-visible,
+.lumen-woocommerce-page #place_order:hover,
+.lumen-woocommerce-page #place_order:focus-visible {
+    color: #12131a;
+    background: var(--pink);
+    border-color: var(--pink);
+    transform: translateY(-1px);
+}
+
+.lumen-cart-page .coupon {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.lumen-cart-page .coupon label {
+    width: 100%;
+}
+
+.lumen-cart-page .coupon input {
+    flex: 1 1 160px;
+}
+
+.lumen-cart-page .coupon button,
+.lumen-cart-page .actions button {
+    padding: 11px 16px;
+}
+
+.lumen-checkout-page .woocommerce-checkout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+    gap: 28px;
+}
+
+.lumen-checkout-page .woocommerce-checkout #customer_details {
+    display: grid;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    gap: 22px;
+}
+
+.lumen-checkout-page .woocommerce-checkout #customer_details > div {
+    float: none;
+    width: auto;
+}
+
+.lumen-checkout-page #order_review {
+    position: sticky;
+    top: 24px;
+}
+
+.lumen-checkout-page #order_review_heading {
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 12px;
+}
+
+.lumen-checkout-page #order_review {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.lumen-checkout-page .woocommerce-checkout-review-order-table th,
+.lumen-checkout-page .woocommerce-checkout-review-order-table td {
+    padding: 12px 0;
+    color: var(--light-grey);
+    border-color: #34384c;
+}
+
+.lumen-checkout-page #payment {
+    margin-top: 20px;
+    padding: 18px;
+    color: var(--light-grey);
+    background: #12131a;
+    border-radius: 8px;
+}
+
+.lumen-checkout-page #payment div.payment_box {
+    color: var(--blue-grey);
+    background: #1b1d27;
+}
+
+.lumen-checkout-page #payment div.payment_box::before {
+    border-bottom-color: #1b1d27;
+}
+
+.lumen-checkout-page .woocommerce-privacy-policy-text,
+.lumen-checkout-page .woocommerce-terms-and-conditions-checkbox-text {
+    color: var(--blue-grey);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.lumen-checkout-page #place_order {
+    width: 100%;
+    padding: 14px 18px;
+}
+
+.lumen-product-page .product {
+    padding: 28px;
+    color: var(--light-grey);
+    background: #1b1d27;
+    border: 1px solid #34384c;
+    border-radius: 10px;
+}
+
+.lumen-product-page .product .woocommerce-product-gallery__image img {
+    border-radius: 8px;
+}
+
+.lumen-product-page .product .product_title {
+    color: #f4f3fb;
+    font-size: clamp(30px, 5vw, 54px);
+}
+
+.lumen-product-page .product .price {
+    color: var(--cyan-buttons);
+    font-size: 24px;
+}
+
+.lumen-product-page .product .woocommerce-product-details__short-description,
+.lumen-product-page .product .product_meta {
+    color: var(--blue-grey);
+}
+
+.lumen-product-page .product form.cart {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.lumen-product-page .product form.cart .button {
+    padding: 13px 18px;
+}
+
+@media (max-width: 760px) {
+    .lumen-woocommerce-page {
+        padding: 100px 14px 60px;
+    }
+
+    .lumen-cart-page .woocommerce table.shop_table {
+        font-size: 13px;
+    }
+
+    .lumen-cart-page .woocommerce table.shop_table th,
+    .lumen-cart-page .woocommerce table.shop_table td {
+        padding: 12px 8px;
+    }
+
+    .lumen-cart-page .product-thumbnail img {
+        width: 54px;
+        height: 54px;
+    }
+
+    .lumen-checkout-page .woocommerce-checkout {
+        display: block;
+    }
+
+    .lumen-checkout-page #order_review {
+        grid-column: auto;
+        grid-row: auto;
+        position: static;
+        margin-top: 24px;
+    }
+
+    .lumen-checkout-page #order_review_heading {
+        margin-top: 24px;
+    }
+
+    .lumen-product-page .product {
+        padding: 18px;
+    }
+
+    .lumen-cart-page .actions {
+        display: grid;
+        gap: 12px;
+    }
+
+    .lumen-cart-page .actions button {
+        width: 100%;
+    }
 }
 
 @media (max-width: 1100px) {

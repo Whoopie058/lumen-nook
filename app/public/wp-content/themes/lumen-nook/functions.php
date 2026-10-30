@@ -257,7 +257,6 @@ function lumen_nook_ensure_blogs_page() {
 
     if (
         get_option('lumen_nook_blogs_page_created') &&
-        get_option('lumen_nook_gear_page_created') &&
         get_option('lumen_nook_login_page_created') &&
         get_option('lumen_nook_inspiration_page_created')
     ) {
@@ -278,21 +277,6 @@ function lumen_nook_ensure_blogs_page() {
     }
 
     update_option('lumen_nook_blogs_page_created', true);
-
-    $gear_page = get_page_by_path('gear');
-
-    if (!$gear_page) {
-        wp_insert_post(
-            array(
-                'post_title' => 'Shop Gear',
-                'post_name' => 'gear',
-                'post_status' => 'publish',
-                'post_type' => 'page'
-            )
-        );
-    }
-
-    update_option('lumen_nook_gear_page_created', true);
 
     $login_page = get_page_by_path('login');
 

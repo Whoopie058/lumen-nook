@@ -53,19 +53,22 @@ $checkout_url = function_exists('wc_get_checkout_url') ? wc_get_checkout_url() :
                     $brand = $brand ? $brand : $category_label;
                     $badge = $product->is_on_sale() ? 'Limited' : ($product->is_featured() ? 'Bestseller' : '');
                     $image = wp_get_attachment_image_url($product->get_image_id(), 'woocommerce_thumbnail');
+                    $product_url = get_permalink($product->get_id());
                     ?>
                     <article class="product-card" data-category="<?php echo esc_attr(wp_json_encode($category_slugs)); ?>" data-name="<?php echo esc_attr($product->get_name()); ?>">
-                        <div class="product-image-wrap">
+                        <a class="product-card-link" href="<?php echo esc_url($product_url); ?>" aria-label="<?php echo esc_attr(sprintf('View %s', $product->get_name())); ?>">
+                            <div class="product-image-wrap">
                             <?php if ($image) : ?>
                                 <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($product->get_image_id() ? get_post_meta($product->get_image_id(), '_wp_attachment_image_alt', true) : $product->get_name()); ?>" class="product-image" loading="lazy" decoding="async">
                             <?php else : ?>
                                 <div class="product-image-placeholder" aria-hidden="true">Lumen Nook</div>
                             <?php endif; ?>
                             <?php if ($badge) : ?><span class="product-badge<?php echo 'Limited' === $badge ? ' product-badge-pink' : ''; ?>"><?php echo esc_html($badge); ?></span><?php endif; ?>
-                        </div>
+                            </div>
+                        </a>
                         <div class="product-card-content">
                             <p class="product-category"><?php echo esc_html($category_label . ' / ' . $brand); ?></p>
-                            <h3><?php echo esc_html($product->get_name()); ?></h3>
+                            <h3><a class="product-card-title" href="<?php echo esc_url($product_url); ?>"><?php echo esc_html($product->get_name()); ?></a></h3>
                             <div class="product-card-footer">
                                 <strong><?php echo wp_kses_post(wc_price($product->get_price())); ?></strong>
                                 <?php if ($product->is_purchasable() && $product->is_in_stock()) : ?>

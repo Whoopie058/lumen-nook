@@ -1830,6 +1830,23 @@ h6 {
     transition: transform 300ms ease;
 }
 
+.product-image-placeholder {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+    color: var(--blue-grey);
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.product-unavailable {
+    padding: 10px 12px;
+    color: var(--blue-grey);
+    font-size: 12px;
+}
+
 .product-card:hover .product-image {
     transform: scale(1.04);
 }
@@ -2182,7 +2199,6 @@ h6 {
     }
 }
 
-
 /* WooCommerce header logo fix */
 
 body.woocommerce .navigation .logo,
@@ -2200,123 +2216,4 @@ body.woocommerce-page .navigation .logo-link {
     display: flex;
     align-items: center;
     flex-shrink: 0;
-}
-
-
-/* ======================================
-   LUMEN NOOK - WOOCOMMERCE SHOP
-   ====================================== */
-
-/* Shop container */
-body.woocommerce .lumen-shop {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-    color: #f5f5fa;
-}
-
-/* Product grid */
-body.woocommerce .lumen-shop ul.products {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-    padding: 0;
-    margin: 30px 0;
-}
-
-body.woocommerce .lumen-shop ul.products::before,
-body.woocommerce .lumen-shop ul.products::after {
-    display: none;
-}
-
-/* Product cards */
-body.woocommerce .lumen-shop ul.products li.product {
-    float: none;
-    width: auto !important;
-    margin: 0 !important;
-    min-width: 0;
-    background: #1d1e29;
-    border: 1px solid #393b50;
-    border-radius: 13px;
-    overflow: hidden;
-    padding-bottom: 18px;
-    transition: transform 0.2s, border-color 0.2s;
-}
-
-body.woocommerce .lumen-shop ul.products li.product:hover {
-    transform: translateY(-4px);
-    border-color: #89cfff;
-}
-
-/* Product images */
-body.woocommerce .lumen-shop ul.products li.product img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1.45;
-    object-fit: cover;
-    margin: 0 0 20px !important;
-}
-
-/* Product titles */
-body.woocommerce .lumen-shop .woocommerce-loop-product__title {
-    color: #ffffff;
-    font-size: 23px !important;
-    font-weight: 700;
-    line-height: 1.15;
-    padding: 0 20px !important;
-    margin-bottom: 20px !important;
-    overflow-wrap: anywhere;
-}
-
-/* Remove default link styling */
-body.woocommerce .lumen-shop ul.products li.product a {
-    text-decoration: none;
-}
-
-/* Product prices */
-body.woocommerce .lumen-shop ul.products li.product .price {
-    color: #ffffff !important;
-    font-size: 20px !important;
-    font-weight: bold;
-    padding: 0 20px;
-    margin-bottom: 12px;
-}
-
-/* Add to cart buttons */
-body.woocommerce .lumen-shop ul.products li.product .button {
-    display: inline-block;
-    background: #8acfff;
-    color: #111827;
-    border: none;
-    border-radius: 5px;
-    padding: 13px 18px;
-    margin: 8px 20px 0 !important;
-    font-size: 14px;
-    font-weight: 500;
-    transition: background 0.2s;
-}
-
-body.woocommerce .lumen-shop ul.products li.product .button:hover {
-    background: #b2e1ff;
-    color: #111827;
-}
-
-/* Shop result count and sorting */
-body.woocommerce .lumen-shop .woocommerce-result-count,
-body.woocommerce .lumen-shop .woocommerce-ordering {
-    color: #f5f5fa;
-}
-
-/* Responsive layout */
-@media (max-width: 900px) {
-    body.woocommerce .lumen-shop ul.products {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 600px) {
-    body.woocommerce .lumen-shop ul.products {
-        grid-template-columns: 1fr;
-    }
 }

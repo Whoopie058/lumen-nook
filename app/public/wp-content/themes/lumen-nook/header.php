@@ -56,6 +56,8 @@
 
     <div class="nav-actions">
 
+        <?php $is_shop_page = is_page('gear') || (function_exists('is_shop') && is_shop()); ?>
+
         <form
             class="nav-search"
             role="search"
@@ -69,12 +71,12 @@
                 name="s"
                 placeholder="Search"
                 aria-label="Search"
-                <?php if (is_page('gear')) : ?>id="shop-search"<?php endif; ?>
+                <?php if ($is_shop_page) : ?>id="shop-search"<?php endif; ?>
             >
 
         </form>
 
-        <?php if (is_page('gear')) : ?>
+        <?php if ($is_shop_page) : ?>
             <button class="basket-toggle" type="button" aria-controls="basket-panel" aria-expanded="false">
                 <span class="basket-icon" aria-hidden="true">⌑</span>
                 <span>Basket</span>

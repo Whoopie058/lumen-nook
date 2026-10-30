@@ -62,6 +62,27 @@ function lumen_nook_enqueue_styles() {
         );
     }
 
+    if (is_page('gear') || (function_exists('is_shop') && is_shop())) {
+        wp_enqueue_script(
+            'lumen-nook-shop',
+            get_template_directory_uri() . '/js/shop.js',
+            array(),
+            '1.0',
+            true
+        );
+
+        wp_localize_script(
+            'lumen-nook-shop',
+            'lumenNookShop',
+            array(
+                'ajaxUrl' => class_exists('WC_AJAX') ? WC_AJAX::get_endpoint('lumen_nook_cart') : '',
+                'nonce' => wp_create_nonce('lumen_nook_cart'),
+                'cartUrl' => function_exists('wc_get_cart_url') ? wc_get_cart_url() : '',
+                'checkoutUrl' => function_exists('wc_get_checkout_url') ? wc_get_checkout_url() : '',
+            )
+        );
+    }
+
 }
 
 add_action('wp_enqueue_scripts', 'lumen_nook_enqueue_styles');
@@ -604,3 +625,56 @@ function shop_enable_woocommerce() {
     add_theme_support('woocommerce');
 }
 add_action('after_setup_theme', 'shop_enable_woocommerce');
+
+function lumen_nook_cart_response() {
+    check_ajax_referer('lumen_nook_cart', 'nonce');
+
+    if (!function_exists('WC') || !WC()->cart) {
+        wp_send_json_error(array('message' => 'The shopping basket is unavailable.'), 503);
+    }
+
+    $action = isset($_POST['cart_action']) ? sanitize_key(wp_unslash($_POST['cart_action'])) : 'get';
+    $product_id = isset($_POST['product_id']) ? absint($_POST['product_id']) : 0;
+    $quantity = isset($_POST['quantity']) ? max(1, absint($_POST['quantity'])) : 1;
+    $success = true;
+
+    if ('add' === $action) {
+        $product = wc_get_product($product_id);
+        $success = $product && $product->is_purchasable() && $product->is_in_stock() && WC()->cart->add_to_cart($product_id, $quantity);
+    } elseif ('update' === $action) {
+        $cart_item_key = isset($_POST['cart_item_key']) ? wc_clean(wp_unslash($_POST['cart_item_key'])) : '';
+        if ($cart_item_key && isset(WC()->cart->cart_contents[$cart_item_key])) {
+            $success = WC()->cart->set_quantity($cart_item_key, $quantity);
+        } else {
+            $success = false;
+        }
+    } elseif ('remove' === $action) {
+        $cart_item_key = isset($_POST['cart_item_key']) ? wc_clean(wp_unslash($_POST['cart_item_key'])) : '';
+        $success = $cart_item_key && WC()->cart->remove_cart_item($cart_item_key);
+    }
+
+    if (!$success) {
+        wp_send_json_error(array('message' => 'This item could not be added to the basket.'), 400);
+    }
+
+    $items = array();
+    foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
+        $product = $cart_item['data'];
+        $items[] = array(
+            'key' => $cart_item_key,
+            'name' => $product->get_name(),
+            'price' => (float) $product->get_price(),
+            'quantity' => (int) $cart_item['quantity'],
+        );
+    }
+
+    wp_send_json_success(array(
+        'items' => $items,
+        'count' => WC()->cart->get_cart_contents_count(),
+        'subtotal' => (float) WC()->cart->get_subtotal(),
+        'subtotalHtml' => WC()->cart->get_cart_subtotal(),
+    ));
+}
+
+add_action('wc_ajax_lumen_nook_cart', 'lumen_nook_cart_response');
+add_action('wc_ajax_nopriv_lumen_nook_cart', 'lumen_nook_cart_response');

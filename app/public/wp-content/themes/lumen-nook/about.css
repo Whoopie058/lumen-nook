@@ -97,10 +97,28 @@
     border-top: 1px solid #34384c;
 }
 .lumen-about__mission {
-    max-width: 800px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, .85fr);
+    gap: clamp(40px, 8vw, 110px);
+    align-items: center;
     padding: 86px 0;
 }
 .lumen-about__mission h2 { max-width: 700px; }
+.lumen-about__mission-copy { max-width: 700px; }
+.lumen-about__video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #1b1d27;
+    border: 1px solid #34384c;
+    box-shadow: 12px 12px 0 rgba(255,140,200,.08);
+}
+.lumen-about__video iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
 .lumen-about__services { padding: 86px 0; }
 .lumen-about__section-heading { margin-bottom: 34px; }
 .lumen-about__service-grid {
@@ -170,6 +188,8 @@
         flex-direction: column;
         align-items: stretch;
     }
+    .lumen-about__mission { display: block; }
+    .lumen-about__video { margin-top: 40px; }
     .lumen-about__hero { min-height: 0; }
     .lumen-about__placeholder, .lumen-about__placeholder--hero { min-height: 280px; }
     .lumen-about__placeholder img, .lumen-about__placeholder--hero img { min-height: 280px; }

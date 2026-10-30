@@ -90,11 +90,62 @@ $product_image_uri = $theme_uri . '/img/Products/optimized/';
         const entries = Object.values(basket);
         basketCount.textContent = entries.reduce((sum, item) => sum + item.quantity, 0);
         basketTotal.textContent = formatPrice(entries.reduce((sum, item) => sum + item.price * item.quantity, 0));
-        basketItems.innerHTML = entries.length ? entries.map((item) => `<div class="basket-item"><div><strong>${item.name}</strong><span>${formatPrice(item.price)} each</span></div><div class="quantity-control"><button type="button" data-action="decrease" data-product="${item.id}" aria-label="Decrease ${item.name} quantity">−</button><span>${item.quantity}</span><button type="button" data-action="increase" data-product="${item.id}" aria-label="Increase ${item.name} quantity">+</button></div><button class="remove-item" type="button" data-action="remove" data-product="${item.id}">Remove</button></div>`).join("") : '<p class="basket-empty">Your basket is waiting for its first upgrade.</p>';
+        basketItems.replaceChildren();
+        if (!entries.length) {
+            const emptyMessage = document.createElement("p");
+            emptyMessage.className = "basket-empty";
+            emptyMessage.textContent = "Your basket is waiting for its first upgrade.";
+            basketItems.appendChild(emptyMessage);
+            return;
+        }
+        entries.forEach((item) => {
+            const basketItem = document.createElement("div");
+            basketItem.className = "basket-item";
+            const productDetails = document.createElement("div");
+            const productName = document.createElement("strong");
+            productName.textContent = item.name;
+            const productPrice = document.createElement("span");
+            productPrice.textContent = `${formatPrice(item.price)} each`;
+            productDetails.append(productName, productPrice);
+            const quantityControl = document.createElement("div");
+            quantityControl.className = "quantity-control";
+            const decreaseButton = document.createElement("button");
+            decreaseButton.type = "button";
+            decreaseButton.dataset.action = "decrease";
+            decreaseButton.dataset.product = item.id;
+            decreaseButton.setAttribute("aria-label", `Decrease ${item.name} quantity`);
+            decreaseButton.textContent = "−";
+            const quantity = document.createElement("span");
+            quantity.textContent = item.quantity;
+            const increaseButton = document.createElement("button");
+            increaseButton.type = "button";
+            increaseButton.dataset.action = "increase";
+            increaseButton.dataset.product = item.id;
+            increaseButton.setAttribute("aria-label", `Increase ${item.name} quantity`);
+            increaseButton.textContent = "+";
+            quantityControl.append(decreaseButton, quantity, increaseButton);
+            const removeButton = document.createElement("button");
+            removeButton.className = "remove-item";
+            removeButton.type = "button";
+            removeButton.dataset.action = "remove";
+            removeButton.dataset.product = item.id;
+            removeButton.textContent = "Remove";
+            basketItem.append(productDetails, quantityControl, removeButton);
+            basketItems.appendChild(basketItem);
+        });
     };
     const saveBasket = () => localStorage.setItem("lumen-nook-basket", JSON.stringify(basket));
     try { basket = JSON.parse(localStorage.getItem("lumen-nook-basket") || "{}"); } catch (error) { basket = {}; }
-    Object.keys(basket).forEach((id) => { if (!products[id]) delete basket[id]; });
+    Object.keys(basket).forEach((id) => {
+        if (!products[id]) {
+            delete basket[id];
+            return;
+        }
+        basket[id] = {
+            ...products[id],
+            quantity: Number.isSafeInteger(basket[id].quantity) && basket[id].quantity > 0 ? basket[id].quantity : 1
+        };
+    });
     document.querySelectorAll(".add-to-basket").forEach((button) => button.addEventListener("click", () => {
         const product = products[button.dataset.product];
         basket[product.id] = { ...product, quantity: (basket[product.id]?.quantity || 0) + 1 };

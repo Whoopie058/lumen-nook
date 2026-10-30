@@ -119,11 +119,55 @@
                 const count = entries.reduce((sum, item) => sum + item.quantity, 0);
                 basketCount.textContent = count;
                 basketTotal.textContent = formatPrice(entries.reduce((sum, item) => sum + item.price * item.quantity, 0));
-                basketItems.innerHTML = entries.length ? entries.map((item) => `<div class="basket-item"><div><strong>${item.name}</strong><span>${formatPrice(item.price)} each</span></div><div class="quantity-control"><button type="button" data-action="decrease" data-product="${item.id}" aria-label="Decrease ${item.name} quantity">−</button><span>${item.quantity}</span><button type="button" data-action="increase" data-product="${item.id}" aria-label="Increase ${item.name} quantity">+</button></div><button class="remove-item" type="button" data-action="remove" data-product="${item.id}">Remove</button></div>`).join("") : '<p class="basket-empty">Your basket is waiting for its first upgrade.</p>';
+                basketItems.replaceChildren();
+                if (!entries.length) {
+                    const emptyMessage = document.createElement("p");
+                    emptyMessage.className = "basket-empty";
+                    emptyMessage.textContent = "Your basket is waiting for its first upgrade.";
+                    basketItems.appendChild(emptyMessage);
+                    return;
+                }
+                entries.forEach((item) => {
+                    const basketItem = document.createElement("div");
+                    basketItem.className = "basket-item";
+                    const details = document.createElement("div");
+                    const name = document.createElement("strong");
+                    name.textContent = item.name;
+                    const price = document.createElement("span");
+                    price.textContent = `${formatPrice(item.price)} each`;
+                    details.append(name, price);
+                    const quantityControl = document.createElement("div");
+                    quantityControl.className = "quantity-control";
+                    const makeButton = (action, label, text) => {
+                        const button = document.createElement("button");
+                        button.type = "button";
+                        button.dataset.action = action;
+                        button.dataset.product = item.id;
+                        button.setAttribute("aria-label", `${label} ${item.name} quantity`);
+                        button.textContent = text;
+                        return button;
+                    };
+                    const quantity = document.createElement("span");
+                    quantity.textContent = item.quantity;
+                    quantityControl.append(makeButton("decrease", "Decrease", "−"), quantity, makeButton("increase", "Increase", "+"));
+                    const removeButton = makeButton("remove", "Remove", "Remove");
+                    removeButton.className = "remove-item";
+                    basketItem.append(details, quantityControl, removeButton);
+                    basketItems.appendChild(basketItem);
+                });
             };
             const saveBasket = () => { localStorage.setItem("lumen-nook-basket", JSON.stringify(basket)); };
             try { basket = JSON.parse(localStorage.getItem("lumen-nook-basket") || "{}"); } catch (error) { basket = {}; }
-            Object.keys(basket).forEach((id) => { if (!products[id]) delete basket[id]; });
+            Object.keys(basket).forEach((id) => {
+                if (!products[id]) {
+                    delete basket[id];
+                    return;
+                }
+                basket[id] = {
+                    ...products[id],
+                    quantity: Number.isSafeInteger(basket[id].quantity) && basket[id].quantity > 0 ? basket[id].quantity : 1
+                };
+            });
             document.querySelectorAll(".add-to-basket").forEach((button) => button.addEventListener("click", () => { const product = products[button.dataset.product]; basket[product.id] = { ...product, quantity: (basket[product.id]?.quantity || 0) + 1 }; saveBasket(); renderBasket(); button.textContent = "Added"; setTimeout(() => { button.textContent = "Add to Basket"; }, 900); }));
             basketItems.addEventListener("click", (event) => { const button = event.target.closest("button[data-product]"); if (!button) return; const item = basket[button.dataset.product]; if (button.dataset.action === "remove" || (button.dataset.action === "decrease" && item.quantity === 1)) delete basket[button.dataset.product]; else item.quantity += button.dataset.action === "increase" ? 1 : -1; saveBasket(); renderBasket(); });
             const basketPanel = document.querySelector(".basket-panel");

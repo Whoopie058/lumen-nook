@@ -1,0 +1,2 @@
+2026-10-30T01:20:43+00:00 DEBUG #3630.WC - [New Request] POST / @ 01:20:42.306
+2026-10-30T01:20:43+00:00 ERROR #3630.WC - SDK v6 client token runtime error: Cannot request a PayPal client token without a client ID and secret.

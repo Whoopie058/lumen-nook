@@ -14,9 +14,20 @@
     </section>
 
     <section class="lumen-about__mission">
-        <p class="lumen-about__eyebrow">Why Lumen Nook exists</p>
-        <h2>Making your ideal setup feel easier to build.</h2>
-        <p>Choosing computer gear can be overwhelming. Lumen Nook is designed to make the process more accessible and enjoyable, whether you are putting together your first desk or refining a setup you already love.</p>
+        <div class="lumen-about__mission-copy">
+            <p class="lumen-about__eyebrow">Why Lumen Nook exists</p>
+            <h2>Making your ideal setup feel easier to build.</h2>
+            <p>Choosing computer gear can be overwhelming. Lumen Nook is designed to make the process more accessible and enjoyable, whether you are putting together your first desk or refining a setup you already love.</p>
+        </div>
+        <div class="lumen-about__video">
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/ocplSWCKBQs"
+                title="Making your ideal setup feel easier to build"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            ></iframe>
+        </div>
     </section>
 
     <section class="lumen-about__services" aria-labelledby="lumen-about-services-heading">

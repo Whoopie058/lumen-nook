@@ -2399,29 +2399,75 @@ h6 {
 }
 
 .lumen-product-page .product .product_title {
+    margin: 0 0 18px;
     color: #f4f3fb;
     font-size: clamp(30px, 5vw, 54px);
+    line-height: 1.1;
 }
 
 .lumen-product-page .product .price {
+    display: block;
+    margin: 0 0 20px;
     color: var(--cyan-buttons);
     font-size: 24px;
 }
 
 .lumen-product-page .product .woocommerce-product-details__short-description,
 .lumen-product-page .product .product_meta {
+    margin: 0 0 22px;
     color: var(--blue-grey);
+    line-height: 1.7;
+}
+
+.lumen-product-page .product .woocommerce-product-details__short-description p {
+    margin: 0 0 14px;
+}
+
+.lumen-product-page .product .woocommerce-product-details__short-description p:last-child {
+    margin-bottom: 0;
+}
+
+.lumen-product-page .product .product_meta {
+    padding-top: 18px;
+    border-top: 1px solid #34384c;
 }
 
 .lumen-product-page .product form.cart {
+    margin: 0 0 28px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 12px;
 }
 
+.lumen-product-page .product form.cart .quantity {
+    margin: 0;
+}
+
 .lumen-product-page .product form.cart .button {
     padding: 13px 18px;
+}
+
+.lumen-product-page .product .woocommerce-tabs {
+    margin-top: 34px;
+    padding-top: 28px;
+    border-top: 1px solid #34384c;
+}
+
+.lumen-product-page .product .woocommerce-tabs ul.tabs {
+    margin: 0 0 24px;
+    padding: 0;
+}
+
+.lumen-product-page .product .woocommerce-tabs .panel h2 {
+    margin: 0 0 14px;
+    color: #f4f3fb;
+}
+
+.lumen-product-page .product .woocommerce-tabs .panel p {
+    margin: 0 0 16px;
+    color: var(--blue-grey);
+    line-height: 1.7;
 }
 
 @media (max-width: 760px) {

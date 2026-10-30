@@ -4,11 +4,12 @@
 $footer_pages = array(
     array('Home', home_url('/')),
     array('About Lumen Nook', get_permalink(get_page_by_path('about-us'))),
-    array('Shop Gear', get_permalink(get_page_by_path('gear'))),
+    array('Shop Gear', function_exists('wc_get_page_permalink') ? wc_get_page_permalink('shop') : get_permalink(get_page_by_path('gear'))),
     array('Inspiration', get_permalink(get_page_by_path('inspiration'))),
     array('Blogs', get_permalink(get_page_by_path('blogs'))),
     array('Sustainability Initiatives', get_permalink(get_page_by_path('sustainability-initiatives'))),
-    array('Login', get_permalink(get_page_by_path('login')))
+    array('Login', function_exists('wc_get_page_permalink') ? wc_get_page_permalink('myaccount') : get_permalink(get_page_by_path('login'))),
+    array('Refund and Returns Policy', function_exists('wc_get_page_permalink') ? wc_get_page_permalink('refund_returns') : get_permalink(get_page_by_path('refund_returns')))
 );
 ?>
 

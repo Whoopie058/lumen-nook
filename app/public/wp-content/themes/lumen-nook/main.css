@@ -2448,6 +2448,108 @@ h6 {
     padding: 13px 18px;
 }
 
+.lumen-account-page .woocommerce {
+    padding: 26px;
+    background: #1b1d27;
+    border: 1px solid #34384c;
+    border-radius: 10px;
+}
+
+.lumen-account-page .woocommerce-MyAccount-navigation {
+    width: 25%;
+    padding-right: 26px;
+}
+
+.lumen-account-page .woocommerce-MyAccount-navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lumen-account-page .woocommerce-MyAccount-navigation li {
+    margin-bottom: 8px;
+}
+
+.lumen-account-page .woocommerce-MyAccount-navigation a {
+    display: block;
+    padding: 11px 13px;
+    color: var(--blue-grey);
+    border: 1px solid transparent;
+    border-radius: 6px;
+}
+
+.lumen-account-page .woocommerce-MyAccount-navigation .is-active a,
+.lumen-account-page .woocommerce-MyAccount-navigation a:hover,
+.lumen-account-page .woocommerce-MyAccount-navigation a:focus-visible {
+    color: #12131a;
+    background: var(--cyan-buttons);
+    border-color: var(--cyan-buttons);
+}
+
+.lumen-account-page .woocommerce-MyAccount-content {
+    width: 75%;
+    padding-left: 26px;
+    color: var(--blue-grey);
+    border-left: 1px solid #34384c;
+    line-height: 1.7;
+}
+
+.lumen-account-page .woocommerce-MyAccount-content h2,
+.lumen-account-page .woocommerce-MyAccount-content h3 {
+    margin: 0 0 16px;
+    color: #f4f3fb;
+}
+
+.lumen-account-page .woocommerce-MyAccount-content fieldset,
+.lumen-account-page .woocommerce-MyAccount-content table {
+    margin-top: 24px;
+}
+
+.lumen-policy-content {
+    max-width: 860px;
+    padding: 30px 34px;
+    color: var(--blue-grey);
+    background: #1b1d27;
+    border: 1px solid #34384c;
+    border-radius: 10px;
+    line-height: 1.75;
+}
+
+.lumen-policy-content h2,
+.lumen-policy-content h3 {
+    margin: 30px 0 12px;
+    color: #f4f3fb;
+    line-height: 1.25;
+}
+
+.lumen-policy-content h2:first-child,
+.lumen-policy-content h3:first-child {
+    margin-top: 0;
+}
+
+.lumen-policy-content p {
+    margin: 0 0 18px;
+}
+
+.lumen-policy-content ul,
+.lumen-policy-content ol {
+    margin: 0 0 22px;
+    padding-left: 24px;
+}
+
+.lumen-policy-content li {
+    margin-bottom: 8px;
+}
+
+.lumen-policy-content a {
+    color: var(--cyan-buttons);
+}
+
+.lumen-policy-content a:hover,
+.lumen-policy-content a:focus-visible {
+    color: var(--pink);
+}
+
 .lumen-product-page .product .woocommerce-tabs {
     margin-top: 34px;
     padding-top: 28px;
@@ -2506,6 +2608,28 @@ h6 {
 
     .lumen-product-page .product {
         padding: 18px;
+    }
+
+    .lumen-account-page .woocommerce {
+        padding: 18px;
+    }
+
+    .lumen-account-page .woocommerce-MyAccount-navigation,
+    .lumen-account-page .woocommerce-MyAccount-content {
+        float: none;
+        width: 100%;
+        padding: 0;
+    }
+
+    .lumen-account-page .woocommerce-MyAccount-content {
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: 1px solid #34384c;
+        border-left: 0;
+    }
+
+    .lumen-policy-content {
+        padding: 22px 18px;
     }
 
     .lumen-cart-page .actions {
